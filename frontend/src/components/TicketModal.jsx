@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../api/api.configure.js';
 
 const TicketModal = ({ event, onClose }) => {
     const [email, setEmail] = useState('');
@@ -10,7 +10,7 @@ const TicketModal = ({ event, onClose }) => {
         if (!consent) return alert("Please agree to the terms.");
 
         try {
-            await axios.post('/api/leads', {
+            await api.post('/api/leads', {
                 email,
                 hasConsent: consent,
                 eventId: event._id,

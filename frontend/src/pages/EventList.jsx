@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import api from '../api/api.configure.js';
 import EventCard from '../components/EventCard';
 import TicketModal from '../components/TicketModal';
 import { Camera } from 'lucide-react';
@@ -11,7 +11,7 @@ const EventList = () => {
     const { data: events, isLoading, error } = useQuery({
         queryKey: ['events'],
         queryFn: async () => {
-            const res = await axios.get('/api/events');
+            const res = await api.get('/api/events');
             return res.data;
         }
     });

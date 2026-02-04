@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/api.configure.js';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Search, MapPin, Calendar, Filter, CheckCircle, XCircle } from 'lucide-react';
 import { format } from 'date-fns';
@@ -31,7 +31,7 @@ const Dashboard = () => {
             if (filters.startDate) params.append('startDate', filters.startDate);
             if (filters.endDate) params.append('endDate', filters.endDate);
 
-            const res = await axios.get(`/api/events?${params.toString()}`);
+            const res = await api.get(`/api/events?${params.toString()}`);
             setEvents(res.data);
 
             const newCount = res.data.filter(e => e.status === 'new').length;
