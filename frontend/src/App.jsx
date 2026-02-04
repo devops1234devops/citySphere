@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 const queryClient = new QueryClient();
 
 import Login from './pages/Login';
+import AuthSync from './components/AuthSync';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Navigate, BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 
@@ -40,6 +41,7 @@ function AppContent() {
 
     return (
         <>
+            <AuthSync />
             <nav className={navClass}>
                 <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
                     <span style={{ fontSize: '2rem', fontWeight: '900', letterSpacing: '-2px' }}>CITY</span>
